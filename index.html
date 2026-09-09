@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youssef Ashraf | Computer Science & Data Science</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            darkBg: '#090d16',
+            cardBg: '#111726',
+            accent: '#10b981', 
+            accentCyan: '#06b6d4',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+  </style>
+</head>
+
+<body class="bg-darkBg text-slate-200 font-sans relative overflow-x-hidden selection:bg-accent selection:text-black">
+
+  <!-- Interactive Background Canvas -->
+  <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-10"></canvas>
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-darkBg/80 border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="text-xl font-bold font-mono tracking-wider flex items-center gap-2 group">
+        <span class="w-3 h-3 rounded-full bg-accent animate-pulse"></span>
+        <span class="text-white group-hover:text-accent transition-colors">Youssef<span class="text-accent">.dev</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="#about" class="hover:text-accent transition-colors">About</a>
+        <a href="#education" class="hover:text-accent transition-colors">Education</a>
+        <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- رابط السيرة الذاتية يطابق ملفك -->
+        <a href="resume.pdf" download="Youssef_Ashraf_Resume.pdf" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-black bg-accent rounded-lg hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20">
+          <i class="fa-solid fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-24">
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-[85vh] flex items-center justify-center py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+        
+        <!-- Left Column: Details & Avatar -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <!-- Avatar & Status -->
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <!-- تحديث رابط الصورة ليكون portfolio.jpg -->
+              <img src="portfolio.jpg" alt="Youssef Ashraf" class="w-20 h-20 rounded-full object-cover border-2 border-accent shadow-lg shadow-emerald-500/20" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Youssef+Ashraf&background=10b981&color=fff';" />
+              <span class="absolute bottom-0 right-0 w-4 h-4 bg-accent rounded-full border-2 border-darkBg" title="Available for opportunities"></span>
+            </div>
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 text-xs font-medium">
+                <i class="fa-solid fa-circle text-[7px] animate-ping"></i> Open for Internships & Entry-level Roles
+              </span>
+              <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Beni Suef, Egypt</p>
+            </div>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Youssef Ashraf</span>
+          </h1>
+
+          <p class="text-slate-300 font-medium text-base sm:text-lg">
+            Computer Science Student • Data Science & AI Trainee at DEPI
+          </p>
+
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
+            Focusing on Machine Learning, Data Analytics, and solving real-world challenges through structured algorithmic logic and end-to-end data workflows.
+          </p>
+
+          <!-- Core Badges -->
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-brands fa-python text-yellow-400 mr-1.5"></i>Python</span>
+            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-solid fa-database text-cyan-400 mr-1.5"></i>SQL</span>
+            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-solid fa-code text-blue-400 mr-1.5"></i>C++</span>
+            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-solid fa-brain text-purple-400 mr-1.5"></i>Machine Learning</span>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-3">
+            <a href="#projects" class="px-6 py-3 rounded-lg bg-accent text-black font-semibold text-sm hover:bg-emerald-400 transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/10">
+              <i class="fa-solid fa-laptop-code"></i> View Projects
+            </a>
+            <a href="#contact" class="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-medium text-sm transition-all flex items-center gap-2">
+              <i class="fa-regular fa-envelope"></i> Contact Me
+            </a>
+            <!-- رابط السيرة الذاتية للموبايل -->
+            <a href="resume.pdf" download="Youssef_Ashraf_Resume.pdf" class="sm:hidden px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-accent font-medium text-sm transition-all flex items-center gap-2">
+              <i class="fa-solid fa-download"></i> Download CV
+            </a>
+          </div>
+
+          <!-- Socials -->
+          <div class="flex items-center gap-5 pt-2 text-slate-400 text-xl">
+            <a href="https://www.linkedin.com/in/youssef-ashraf-170802413/" target="_blank" class="hover:text-accent transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:abdelraziikyoussef@gmail.com" class="hover:text-accent transition-colors" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="tel:+201017332251" class="hover:text-accent transition-colors" title="Phone"><i class="fa-solid fa-phone"></i></a>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Code Box -->
+        <div class="lg:col-span-5 w-full">
+          <div class="rounded-xl overflow-hidden bg-cardBg border border-slate-800 shadow-2xl shadow-black/80 font-mono text-xs sm:text-sm">
+            
+            <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+              </div>
+              <span class="text-slate-400 text-xs flex items-center gap-1.5">
+                <i class="fa-brands fa-python text-yellow-400"></i> youssef_profile.py
+              </span>
+              <div class="w-8"></div>
+            </div>
+
+            <div class="p-5 text-slate-300 space-y-2 overflow-x-auto leading-relaxed">
+              <div><span class="text-purple-400">class</span> <span class="text-yellow-300">DataScientist</span>:</div>
+              <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-red-300">self</span>):</div>
+              <div class="pl-8"><span class="text-red-300">self</span>.name = <span class="text-emerald-400">"Youssef Ashraf"</span></div>
+              <div class="pl-8"><span class="text-red-300">self</span>.university = <span class="text-emerald-400">"Beni-Suef National University"</span></div>
+              <div class="pl-8"><span class="text-red-300">self</span>.initiative = <span class="text-emerald-400">"DEPI Trainee"</span></div>
+              <div class="pl-8"><span class="text-red-300">self</span>.focus = [<span class="text-emerald-400">"Data Science"</span>, <span class="text-emerald-400">"AI/ML"</span>, <span class="text-emerald-400">"Analytics"</span>]</div>
+              <br/>
+              <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">solve_problem</span>(<span class="text-red-300">self</span>, data):</div>
+              <div class="pl-8">insights = <span class="text-red-300">self</span>.extract_actionable_insights(data)</div>
+              <div class="pl-8"><span class="text-purple-400">return</span> <span class="text-emerald-400">"Intelligent & Practical Solution"</span></div>
+              <br/>
+              <div>profile = <span class="text-yellow-300">DataScientist</span>()</div>
+              <div><span class="text-blue-400">print</span>(profile.solve_problem(<span class="text-emerald-400">"Complex Datasets"</span>))</div>
+              <div class="text-slate-500 pt-2 border-t border-slate-800">
+                <span class="text-accent">></span> [Output]: Intelligent & Practical Solution
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 border-t border-slate-800/80">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Full Portrait Image Card -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group max-w-sm rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-cardBg">
+            <!-- تحديث رابط الصورة هنا أيضاً ليكون portfolio.jpg -->
+            <img src="portfolio.jpg" alt="Youssef Ashraf" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x600/111726/10b981?text=Youssef+Ashraf';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl backdrop-blur-md bg-slate-900/70 border border-slate-800">
+              <p class="text-white font-semibold text-sm">Youssef Ashraf</p>
+              <p class="text-xs text-slate-400">BSc in Computer Science (2026 - 2029)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Exact About Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">About Me</h2>
+            <h3 class="text-3xl font-bold text-white">Transforming Data into Intelligent Solutions</h3>
+          </div>
+
+          <p class="text-slate-300 leading-relaxed text-base">
+            I am a Computer Science student at Beni-Suef National University with a strong focus on Data Science, Machine Learning, and Artificial Intelligence. My technical journey centers on extracting actionable insights from complex data and translating them into intelligent systems.
+          </p>
+
+          <p class="text-slate-400 leading-relaxed text-sm">
+            Currently, I am sharpening my practical expertise through the <strong>Digital Egypt Pioneers Initiative (DEPI)</strong>, where I work across the end-to-end data lifecycle—from data cleaning and exploratory analysis to model training and evaluation. With a solid foundation in <strong>Python, C++, and SQL</strong>, I enjoy tackling complex logic and optimizing algorithmic solutions.
+          </p>
+
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 text-sm flex items-start gap-3">
+            <i class="fa-solid fa-bullseye text-accent text-lg mt-0.5"></i>
+            <div>
+              <strong class="text-white">Career Objective:</strong> I am actively seeking internship and entry-level opportunities where I can contribute to impactful data initiatives and collaborate with forward-thinking teams.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">Academic & Training</h2>
+        <h3 class="text-3xl font-bold text-white">Education & Initiative</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- University Degree -->
+        <div class="p-8 rounded-2xl bg-cardBg border border-slate-800 relative hover:border-slate-700 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-accent flex items-center justify-center text-2xl mb-6">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-emerald-400 border border-slate-700">2026 – 2029</span>
+          <h4 class="text-xl font-bold text-white mt-4 mb-1">Bachelor of Science in Computer Science</h4>
+          <p class="text-sm font-medium text-slate-300 mb-4">Beni-Suef National University</p>
+          
+          <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-4">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-accent text-xs mt-1"></i>
+              <span><strong>Core Academic Focus:</strong> Data Science, Artificial Intelligence, and Machine Learning.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-accent text-xs mt-1"></i>
+              <span><strong>Key Competencies:</strong> Data Structures, Problem Solving, and Software Development using Python, C++, and SQL.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- DEPI Training -->
+        <div class="p-8 rounded-2xl bg-cardBg border border-slate-800 relative hover:border-slate-700 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-cyan-400 border border-slate-700">Current</span>
+          <h4 class="text-xl font-bold text-white mt-4 mb-1">Data Science & AI Trainee</h4>
+          <p class="text-sm font-medium text-slate-300 mb-4">Digital Egypt Pioneers Initiative (DEPI)</p>
+          
+          <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-4">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-cyan-400 text-xs mt-1"></i>
+              <span>Applying data analytical skills and machine learning models to real-world challenges.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-cyan-400 text-xs mt-1"></i>
+              <span>Full lifecycle practice: Data cleaning, exploratory data analysis (EDA), model building, and evaluation.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">Competencies</h2>
+        <h3 class="text-3xl font-bold text-white">Technical Skills</h3>
+        <p class="text-slate-400 text-sm mt-2">Structured directly by functional domain.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Category 1 -->
+        <div class="p-6 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-accent flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-4">Data Science & AI</h4>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              Machine Learning & Artificial Intelligence
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              Data Science & Analytics
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              Data Cleaning & EDA
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              Model Evaluation & Tuning
+            </li>
+          </ul>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="p-6 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-4">Programming & Databases</h4>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              Python (Data Science & ML)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              C++ Development
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              SQL & Relational Databases
+            </li>
+          </ul>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="p-6 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-cubes"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-4">Core Computer Science</h4>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              Data Structures
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              Algorithmic Problem Solving
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              Computational Logic
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">Work & Implementations</h2>
+        <h3 class="text-3xl font-bold text-white">Featured Projects</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Project 1 -->
+        <div class="rounded-xl overflow-hidden bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group flex flex-col justify-between">
+          <div class="p-6">
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-3 font-mono">
+              <span>Machine Learning & EDA</span>
+              <span class="text-emerald-400">DEPI Track</span>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Customer Churn Prediction Model</h4>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+              Comprehensive pipeline for identifying customer attrition risk using exploratory data analysis, data pre-processing, feature selection, and supervised learning classification.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Python</span>
+              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Scikit-Learn</span>
+              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Pandas</span>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-slate-900/50 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-300 hover:text-accent flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github"></i> Repository
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="rounded-xl overflow-hidden bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group flex flex-col justify-between">
+          <div class="p-6">
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-3 font-mono">
+              <span>Database Architecture</span>
+              <span class="text-cyan-400">RDBMS</span>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Relational Gym Management System</h4>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+              Normalized schema and relational database structure handling user subscriptions, scheduling, and billing queries, ensuring data consistency and query performance.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">SQL</span>
+              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Schema Design</span>
+              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Relational Modeling</span>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-slate-900/50 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-300 hover:text-accent flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github"></i> Repository
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 border-t border-slate-800/80">
+      <div class="max-w-xl mx-auto text-center space-y-6">
+        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono">Contact Details</h2>
+        <h3 class="text-3xl font-bold text-white">Let's Connect</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Open for internship opportunities, technical collaborations, and discussions in Machine Learning & Data Science.
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left pt-4">
+          <a href="mailto:abdelraziikyoussef@gmail.com" class="p-4 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-accent flex items-center justify-center text-lg">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400">Email</div>
+              <div class="text-xs font-medium text-white truncate">abdelraziikyoussef@gmail.com</div>
+            </div>
+          </a>
+
+          <a href="tel:+201017332251" class="p-4 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400">Phone</div>
+              <div class="text-xs font-medium text-white">+20 101 733 2251</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="pt-2">
+          <a href="https://www.linkedin.com/in/youssef-ashraf-170802413/" target="_blank" class="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-black font-semibold rounded-lg hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20 text-sm">
+            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800/80 py-8 text-center text-slate-500 text-xs">
+    <p>© 2026 Youssef Ashraf. Built with Tailwind CSS & JavaScript.</p>
+  </footer>
+
+  <!-- Canvas Particle Animation -->
+  <script>
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 120 };
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.7;
+        this.speedY = (Math.random() - 0.5) * 0.7;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+        if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+
+        if (mouse.x && mouse.y) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < mouse.radius) {
+            let force = (mouse.radius - distance) / mouse.radius;
+            let directionX = dx / distance;
+            let directionY = dy / distance;
+            this.x -= directionX * force * 2;
+            this.y -= directionY * force * 2;
+          }
+        }
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.floor((canvas.width * canvas.height) / 14000);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+    initParticles();
+    window.addEventListener('resize', initParticles);
+
+    function connectParticles() {
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a + 1; b < particles.length; b++) {
+          let dx = particles[a].x - particles[b].x;
+          let dy = particles[a].y - particles[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 110) {
+            let opacity = 1 - (distance / 110);
+            ctx.strokeStyle = `rgba(16, 185, 129, ${opacity * 0.15})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
