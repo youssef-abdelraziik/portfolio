@@ -1,564 +1,1380 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youssef Ashraf | Computer Science & Data Science</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Fonts: Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Ashraf | Data Science & AI Portfolio</title>
 
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            darkBg: '#090d16',
-            cardBg: '#111726',
-            accent: '#10b981', 
-            accentCyan: '#06b6d4',
-          }
-        }
-      }
-    }
-  </script>
+    <!-- Google Fonts: Space Grotesk (Headings) & Inter (Body) & JetBrains Mono (Code/Meta) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #090d16; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #10b981; }
-  </style>
-</head>
-
-<body class="bg-darkBg text-slate-200 font-sans relative overflow-x-hidden selection:bg-accent selection:text-black">
-
-  <!-- Interactive Background Canvas -->
-  <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-10"></canvas>
-
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-darkBg/80 border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#hero" class="text-xl font-bold font-mono tracking-wider flex items-center gap-2 group">
-        <span class="w-3 h-3 rounded-full bg-accent animate-pulse"></span>
-        <span class="text-white group-hover:text-accent transition-colors">Youssef<span class="text-accent">.dev</span></span>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-        <a href="#about" class="hover:text-accent transition-colors">About</a>
-        <a href="#education" class="hover:text-accent transition-colors">Education</a>
-        <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
-        <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
-        <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <!-- رابط السيرة الذاتية يطابق ملفك -->
-        <a href="resume.pdf" download="Youssef_Ashraf_Resume.pdf" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-black bg-accent rounded-lg hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20">
-          <i class="fa-solid fa-download"></i> Download CV
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main class="max-w-6xl mx-auto px-6 pt-24">
-
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-[85vh] flex items-center justify-center py-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-        
-        <!-- Left Column: Details & Avatar -->
-        <div class="lg:col-span-7 space-y-6 text-left">
-          
-          <!-- Avatar & Status -->
-          <div class="flex items-center gap-4">
-            <div class="relative">
-              <!-- تحديث رابط الصورة ليكون portfolio.jpg -->
-              <img src="portfolio.jpg" alt="Youssef Ashraf" class="w-20 h-20 rounded-full object-cover border-2 border-accent shadow-lg shadow-emerald-500/20" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Youssef+Ashraf&background=10b981&color=fff';" />
-              <span class="absolute bottom-0 right-0 w-4 h-4 bg-accent rounded-full border-2 border-darkBg" title="Available for opportunities"></span>
-            </div>
-            <div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 text-xs font-medium">
-                <i class="fa-solid fa-circle text-[7px] animate-ping"></i> Open for Internships & Entry-level Roles
-              </span>
-              <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Beni Suef, Egypt</p>
-            </div>
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Youssef Ashraf</span>
-          </h1>
-
-          <p class="text-slate-300 font-medium text-base sm:text-lg">
-            Computer Science Student • Data Science & AI Trainee at DEPI
-          </p>
-
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
-            Focusing on Machine Learning, Data Analytics, and solving real-world challenges through structured algorithmic logic and end-to-end data workflows.
-          </p>
-
-          <!-- Core Badges -->
-          <div class="flex flex-wrap gap-2 pt-1">
-            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-brands fa-python text-yellow-400 mr-1.5"></i>Python</span>
-            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-solid fa-database text-cyan-400 mr-1.5"></i>SQL</span>
-            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-solid fa-code text-blue-400 mr-1.5"></i>C++</span>
-            <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-md text-xs text-slate-300 font-mono"><i class="fa-solid fa-brain text-purple-400 mr-1.5"></i>Machine Learning</span>
-          </div>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap items-center gap-4 pt-3">
-            <a href="#projects" class="px-6 py-3 rounded-lg bg-accent text-black font-semibold text-sm hover:bg-emerald-400 transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/10">
-              <i class="fa-solid fa-laptop-code"></i> View Projects
-            </a>
-            <a href="#contact" class="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-medium text-sm transition-all flex items-center gap-2">
-              <i class="fa-regular fa-envelope"></i> Contact Me
-            </a>
-            <!-- رابط السيرة الذاتية للموبايل -->
-            <a href="resume.pdf" download="Youssef_Ashraf_Resume.pdf" class="sm:hidden px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-accent font-medium text-sm transition-all flex items-center gap-2">
-              <i class="fa-solid fa-download"></i> Download CV
-            </a>
-          </div>
-
-          <!-- Socials -->
-          <div class="flex items-center gap-5 pt-2 text-slate-400 text-xl">
-            <a href="https://www.linkedin.com/in/youssef-ashraf-170802413/" target="_blank" class="hover:text-accent transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:abdelraziikyoussef@gmail.com" class="hover:text-accent transition-colors" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a href="tel:+201017332251" class="hover:text-accent transition-colors" title="Phone"><i class="fa-solid fa-phone"></i></a>
-          </div>
-        </div>
-
-        <!-- Right Column: Interactive Code Box -->
-        <div class="lg:col-span-5 w-full">
-          <div class="rounded-xl overflow-hidden bg-cardBg border border-slate-800 shadow-2xl shadow-black/80 font-mono text-xs sm:text-sm">
+    <style>
+        :root {
+            /* Palette: Modern Technical / Research Vibe */
+            --bg-primary: #F7F7F6;       /* Warm off-white */
+            --bg-secondary: #FFFFFF;     /* Pure white for cards/sections */
+            --bg-tertiary: #EAEAE8;      /* Subtle contrast background */
+            --text-primary: #1A1A1A;     /* Soft black */
+            --text-secondary: #5A5A55;   /* Warm gray */
+            --text-tertiary: #8C8C88;    /* Lighter gray for metadata */
             
-            <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-              </div>
-              <span class="text-slate-400 text-xs flex items-center gap-1.5">
-                <i class="fa-brands fa-python text-yellow-400"></i> youssef_profile.py
-              </span>
-              <div class="w-8"></div>
-            </div>
+            /* Accent: Deep Rust/Terracotta */
+            --accent-main: #C84B31;      
+            --accent-light: #F2DCD8;
+            
+            /* Borders */
+            --border-color: #D1D1CD;
+            --border-light: #E5E5E2;
 
-            <div class="p-5 text-slate-300 space-y-2 overflow-x-auto leading-relaxed">
-              <div><span class="text-purple-400">class</span> <span class="text-yellow-300">DataScientist</span>:</div>
-              <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-red-300">self</span>):</div>
-              <div class="pl-8"><span class="text-red-300">self</span>.name = <span class="text-emerald-400">"Youssef Ashraf"</span></div>
-              <div class="pl-8"><span class="text-red-300">self</span>.university = <span class="text-emerald-400">"Beni-Suef National University"</span></div>
-              <div class="pl-8"><span class="text-red-300">self</span>.initiative = <span class="text-emerald-400">"DEPI Trainee"</span></div>
-              <div class="pl-8"><span class="text-red-300">self</span>.focus = [<span class="text-emerald-400">"Data Science"</span>, <span class="text-emerald-400">"AI/ML"</span>, <span class="text-emerald-400">"Analytics"</span>]</div>
-              <br/>
-              <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">solve_problem</span>(<span class="text-red-300">self</span>, data):</div>
-              <div class="pl-8">insights = <span class="text-red-300">self</span>.extract_actionable_insights(data)</div>
-              <div class="pl-8"><span class="text-purple-400">return</span> <span class="text-emerald-400">"Intelligent & Practical Solution"</span></div>
-              <br/>
-              <div>profile = <span class="text-yellow-300">DataScientist</span>()</div>
-              <div><span class="text-blue-400">print</span>(profile.solve_problem(<span class="text-emerald-400">"Complex Datasets"</span>))</div>
-              <div class="text-slate-500 pt-2 border-t border-slate-800">
-                <span class="text-accent">></span> [Output]: Intelligent & Practical Solution
-              </div>
-            </div>
-          </div>
-        </div>
+            /* Typography */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
 
-      </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-20 border-t border-slate-800/80">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left: Full Portrait Image Card -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative group max-w-sm rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-cardBg">
-            <!-- تحديث رابط الصورة هنا أيضاً ليكون portfolio.jpg -->
-            <img src="portfolio.jpg" alt="Youssef Ashraf" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x600/111726/10b981?text=Youssef+Ashraf';" />
-            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
-            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl backdrop-blur-md bg-slate-900/70 border border-slate-800">
-              <p class="text-white font-semibold text-sm">Youssef Ashraf</p>
-              <p class="text-xs text-slate-400">BSc in Computer Science (2026 - 2029)</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Exact About Text -->
-        <div class="lg:col-span-7 space-y-6">
-          <div>
-            <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">About Me</h2>
-            <h3 class="text-3xl font-bold text-white">Transforming Data into Intelligent Solutions</h3>
-          </div>
-
-          <p class="text-slate-300 leading-relaxed text-base">
-            I am a Computer Science student at Beni-Suef National University with a strong focus on Data Science, Machine Learning, and Artificial Intelligence. My technical journey centers on extracting actionable insights from complex data and translating them into intelligent systems.
-          </p>
-
-          <p class="text-slate-400 leading-relaxed text-sm">
-            Currently, I am sharpening my practical expertise through the <strong>Digital Egypt Pioneers Initiative (DEPI)</strong>, where I work across the end-to-end data lifecycle—from data cleaning and exploratory analysis to model training and evaluation. With a solid foundation in <strong>Python, C++, and SQL</strong>, I enjoy tackling complex logic and optimizing algorithmic solutions.
-          </p>
-
-          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 text-sm flex items-start gap-3">
-            <i class="fa-solid fa-bullseye text-accent text-lg mt-0.5"></i>
-            <div>
-              <strong class="text-white">Career Objective:</strong> I am actively seeking internship and entry-level opportunities where I can contribute to impactful data initiatives and collaborate with forward-thinking teams.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="py-20 border-t border-slate-800/80">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">Academic & Training</h2>
-        <h3 class="text-3xl font-bold text-white">Education & Initiative</h3>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- University Degree -->
-        <div class="p-8 rounded-2xl bg-cardBg border border-slate-800 relative hover:border-slate-700 transition-all">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-accent flex items-center justify-center text-2xl mb-6">
-            <i class="fa-solid fa-graduation-cap"></i>
-          </div>
-          <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-emerald-400 border border-slate-700">2026 – 2029</span>
-          <h4 class="text-xl font-bold text-white mt-4 mb-1">Bachelor of Science in Computer Science</h4>
-          <p class="text-sm font-medium text-slate-300 mb-4">Beni-Suef National University</p>
-          
-          <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-4">
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-check text-accent text-xs mt-1"></i>
-              <span><strong>Core Academic Focus:</strong> Data Science, Artificial Intelligence, and Machine Learning.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-check text-accent text-xs mt-1"></i>
-              <span><strong>Key Competencies:</strong> Data Structures, Problem Solving, and Software Development using Python, C++, and SQL.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- DEPI Training -->
-        <div class="p-8 rounded-2xl bg-cardBg border border-slate-800 relative hover:border-slate-700 transition-all">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6">
-            <i class="fa-solid fa-award"></i>
-          </div>
-          <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-cyan-400 border border-slate-700">Current</span>
-          <h4 class="text-xl font-bold text-white mt-4 mb-1">Data Science & AI Trainee</h4>
-          <p class="text-sm font-medium text-slate-300 mb-4">Digital Egypt Pioneers Initiative (DEPI)</p>
-          
-          <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-4">
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-check text-cyan-400 text-xs mt-1"></i>
-              <span>Applying data analytical skills and machine learning models to real-world challenges.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-check text-cyan-400 text-xs mt-1"></i>
-              <span>Full lifecycle practice: Data cleaning, exploratory data analysis (EDA), model building, and evaluation.</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 border-t border-slate-800/80">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">Competencies</h2>
-        <h3 class="text-3xl font-bold text-white">Technical Skills</h3>
-        <p class="text-slate-400 text-sm mt-2">Structured directly by functional domain.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Category 1 -->
-        <div class="p-6 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group">
-          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-accent flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-brain"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-4">Data Science & AI</h4>
-          <ul class="space-y-3 text-sm text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-accent"></span>
-              Machine Learning & Artificial Intelligence
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-accent"></span>
-              Data Science & Analytics
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-accent"></span>
-              Data Cleaning & EDA
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-accent"></span>
-              Model Evaluation & Tuning
-            </li>
-          </ul>
-        </div>
-
-        <!-- Category 2 -->
-        <div class="p-6 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-code"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-4">Programming & Databases</h4>
-          <ul class="space-y-3 text-sm text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-              Python (Data Science & ML)
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-              C++ Development
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-              SQL & Relational Databases
-            </li>
-          </ul>
-        </div>
-
-        <!-- Category 3 -->
-        <div class="p-6 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group">
-          <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-cubes"></i>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-4">Core Computer Science</h4>
-          <ul class="space-y-3 text-sm text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-              Data Structures
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-              Algorithmic Problem Solving
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-              Computational Logic
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 border-t border-slate-800/80">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono mb-2">Work & Implementations</h2>
-        <h3 class="text-3xl font-bold text-white">Featured Projects</h3>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-        <!-- Project 1 -->
-        <div class="rounded-xl overflow-hidden bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group flex flex-col justify-between">
-          <div class="p-6">
-            <div class="flex items-center justify-between text-xs text-slate-400 mb-3 font-mono">
-              <span>Machine Learning & EDA</span>
-              <span class="text-emerald-400">DEPI Track</span>
-            </div>
-            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Customer Churn Prediction Model</h4>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-              Comprehensive pipeline for identifying customer attrition risk using exploratory data analysis, data pre-processing, feature selection, and supervised learning classification.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Python</span>
-              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Scikit-Learn</span>
-              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Pandas</span>
-            </div>
-          </div>
-          <div class="px-6 py-4 bg-slate-900/50 border-t border-slate-800/80 flex items-center justify-between">
-            <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-300 hover:text-accent flex items-center gap-1.5 transition-colors">
-              <i class="fa-brands fa-github"></i> Repository
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="rounded-xl overflow-hidden bg-cardBg border border-slate-800 hover:border-slate-700 transition-all group flex flex-col justify-between">
-          <div class="p-6">
-            <div class="flex items-center justify-between text-xs text-slate-400 mb-3 font-mono">
-              <span>Database Architecture</span>
-              <span class="text-cyan-400">RDBMS</span>
-            </div>
-            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Relational Gym Management System</h4>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-              Normalized schema and relational database structure handling user subscriptions, scheduling, and billing queries, ensuring data consistency and query performance.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">SQL</span>
-              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Schema Design</span>
-              <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Relational Modeling</span>
-            </div>
-          </div>
-          <div class="px-6 py-4 bg-slate-900/50 border-t border-slate-800/80 flex items-center justify-between">
-            <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-300 hover:text-accent flex items-center gap-1.5 transition-colors">
-              <i class="fa-brands fa-github"></i> Repository
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 border-t border-slate-800/80">
-      <div class="max-w-xl mx-auto text-center space-y-6">
-        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-mono">Contact Details</h2>
-        <h3 class="text-3xl font-bold text-white">Let's Connect</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Open for internship opportunities, technical collaborations, and discussions in Machine Learning & Data Science.
-        </p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left pt-4">
-          <a href="mailto:abdelraziikyoussef@gmail.com" class="p-4 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-accent flex items-center justify-center text-lg">
-              <i class="fa-solid fa-envelope"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">Email</div>
-              <div class="text-xs font-medium text-white truncate">abdelraziikyoussef@gmail.com</div>
-            </div>
-          </a>
-
-          <a href="tel:+201017332251" class="p-4 rounded-xl bg-cardBg border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
-              <i class="fa-solid fa-phone"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">Phone</div>
-              <div class="text-xs font-medium text-white">+20 101 733 2251</div>
-            </div>
-          </a>
-        </div>
-
-        <div class="pt-2">
-          <a href="https://www.linkedin.com/in/youssef-ashraf-170802413/" target="_blank" class="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-black font-semibold rounded-lg hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20 text-sm">
-            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="border-t border-slate-800/80 py-8 text-center text-slate-500 text-xs">
-    <p>© 2026 Youssef Ashraf. Built with Tailwind CSS & JavaScript.</p>
-  </footer>
-
-  <!-- Canvas Particle Animation -->
-  <script>
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-
-    let particles = [];
-    let mouse = { x: null, y: null, radius: 120 };
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.7;
-        this.speedY = (Math.random() - 0.5) * 0.7;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-        if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-
-        if (mouse.x && mouse.y) {
-          let dx = mouse.x - this.x;
-          let dy = mouse.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < mouse.radius) {
-            let force = (mouse.radius - distance) / mouse.radius;
-            let directionX = dx / distance;
-            let directionY = dy / distance;
-            this.x -= directionX * force * 2;
-            this.y -= directionY * force * 2;
-          }
+            /* Sizing & Spacing */
+            --max-width: 1280px;
+            --nav-height: 80px;
+            --section-pad: clamp(4rem, 8vw, 8rem);
+            --content-pad: clamp(1.5rem, 4vw, 3rem);
+            
+            /* Transitions */
+            --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+            --transition-smooth: 0.4s var(--ease-out);
         }
-      }
-      draw() {
-        ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
 
-    function initParticles() {
-      particles = [];
-      const particleCount = Math.floor((canvas.width * canvas.height) / 14000);
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    }
-    initParticles();
-    window.addEventListener('resize', initParticles);
-
-    function connectParticles() {
-      for (let a = 0; a < particles.length; a++) {
-        for (let b = a + 1; b < particles.length; b++) {
-          let dx = particles[a].x - particles[b].x;
-          let dy = particles[a].y - particles[b].y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 110) {
-            let opacity = 1 - (distance / 110);
-            ctx.strokeStyle = `rgba(16, 185, 129, ${opacity * 0.15})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y);
-            ctx.stroke();
-          }
+        /* -------------------------------------------
+           RESET & GLOBAL
+        ------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-    }
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-      }
-      connectParticles();
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: var(--accent-light);
+            color: var(--accent-main);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--content-pad);
+        }
+
+        /* -------------------------------------------
+           TYPOGRAPHY UTILITIES
+        ------------------------------------------- */
+        .meta-text {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--accent-main);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-label::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background-color: var(--border-color);
+            max-width: 200px;
+        }
+
+        /* -------------------------------------------
+           NAVIGATION
+        ------------------------------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background-color: rgba(247, 247, 246, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        header.scroll-down {
+            transform: translateY(-100%);
+        }
+
+        header.scroll-up {
+            transform: translateY(0);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--content-pad);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent-main);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-bottom: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-main);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* -------------------------------------------
+           HERO SECTION
+        ------------------------------------------- */
+        .hero {
+            padding-top: calc(var(--nav-height) + var(--section-pad));
+            padding-bottom: var(--section-pad);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-meta-bar {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .hero-meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+
+        .hero-meta-value {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Minimal Button Style */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--text-primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--text-primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-light);
+        }
+
+        /* Hero Image Treatment */
+        .hero-visual {
+            position: relative;
+        }
+
+        .portrait-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 3/4;
+            margin-left: auto;
+            z-index: 2;
+        }
+
+        .portrait-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter var(--transition-smooth);
+        }
+
+        .portrait-wrapper:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        /* Editorial Frame */
+        .portrait-frame {
+            position: absolute;
+            top: 2rem;
+            left: -2rem;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            z-index: 1;
+        }
+
+        /* Data Visualization Decorative Block */
+        .hero-data-block {
+            position: absolute;
+            bottom: -2rem;
+            left: -4rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            z-index: 3;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .data-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .data-bar-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .data-bar-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            width: 40px;
+        }
+
+        .data-bar-track {
+            flex-grow: 1;
+            height: 4px;
+            background-color: var(--bg-tertiary);
+            position: relative;
+        }
+
+        .data-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: var(--text-primary);
+        }
+        
+        .data-bar-fill.accent {
+            background-color: var(--accent-main);
+        }
+
+        /* -------------------------------------------
+           ABOUT SECTION (Academic & Focus)
+        ------------------------------------------- */
+        .about-section {
+            padding: var(--section-pad) 0;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            border-left: 2px solid var(--border-light);
+            padding-left: 1.5rem;
+        }
+
+        .info-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-main);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* -------------------------------------------
+           TECH STACK SECTION
+        ------------------------------------------- */
+        .stack-section {
+            padding: var(--section-pad) 0;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .stack-category {
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            padding: 2rem;
+            transition: border-color var(--transition-smooth), transform var(--transition-smooth);
+        }
+
+        .stack-category:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-4px);
+        }
+
+        .stack-category-title {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-light);
+        }
+
+        .stack-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stack-item-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .stack-item-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* -------------------------------------------
+           PROJECTS SECTION
+        ------------------------------------------- */
+        .projects-section {
+            padding: var(--section-pad) 0;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .project-case {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: clamp(4rem, 8vw, 8rem);
+            align-items: center;
+        }
+
+        .project-case:nth-child(even) {
+            direction: rtl; /* Reverse layout visually */
+        }
+
+        .project-case:nth-child(even) > * {
+            direction: ltr; /* Reset text direction */
+        }
+
+        .project-case:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-number {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--border-light);
+            line-height: 1;
+            margin-bottom: -1rem;
+        }
+
+        .project-title {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            letter-spacing: -0.02em;
+        }
+
+        .project-desc {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .p-meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .p-meta-val {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Project Visuals (SVG/HTML based) */
+        .project-visual {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .viz-overlay {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Churn Viz Styles */
+        .churn-chart {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 1rem;
+            border-left: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .churn-bar {
+            width: 30%;
+            background-color: var(--text-primary);
+            position: relative;
+            transition: height 1s ease-out;
+        }
+
+        .churn-bar.danger {
+            background-color: var(--accent-main);
+        }
+
+        /* Database Viz Styles */
+        .db-diagram {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .db-table {
+            border: 1px solid var(--text-primary);
+            background: var(--bg-secondary);
+            padding: 1rem;
+            min-width: 150px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-align: center;
+        }
+        .db-table-header {
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .db-row {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* -------------------------------------------
+           DATA LAB (Learning/Proposed Projects)
+        ------------------------------------------- */
+        .datalab-section {
+            padding: var(--section-pad) 0;
+            background-color: var(--bg-primary);
+        }
+
+        .lab-intro {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .lab-card {
+            border: 1px dashed var(--border-color);
+            padding: 2.5rem;
+            position: relative;
+            transition: all var(--transition-smooth);
+            background: var(--bg-primary);
+        }
+
+        .lab-card:hover {
+            border-style: solid;
+            border-color: var(--text-primary);
+            background: var(--bg-secondary);
+        }
+
+        .lab-tag {
+            position: absolute;
+            top: -0.75rem;
+            left: 2rem;
+            background: var(--bg-primary);
+            padding: 0 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-main);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .lab-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .lab-card p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .lab-stack {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+        }
+
+        /* -------------------------------------------
+           RESUME & CONTACT SECTION
+        ------------------------------------------- */
+        .footer-section {
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+            padding: var(--section-pad) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-section .section-label {
+            color: var(--accent-light);
+        }
+
+        .footer-section .section-label::after {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .resume-box {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 3rem;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .resume-box h3 {
+            color: var(--bg-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .resume-box p {
+            color: var(--text-tertiary);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-light {
+            border-color: var(--bg-primary);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+        }
+
+        .btn-light:hover {
+            background-color: transparent;
+            color: var(--bg-primary);
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+
+        .contact-link {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--bg-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-light);
+        }
+
+        .copyright {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-align: center;
+        }
+
+        /* -------------------------------------------
+           RESPONSIVE DESIGN
+        ------------------------------------------- */
+        @media (max-width: 1024px) {
+            .hero-grid, .about-grid, .project-case, .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                order: -1; /* Move image to top on mobile */
+            }
+
+            .portrait-wrapper {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .portrait-frame {
+                top: 1rem;
+                left: -1rem;
+            }
+
+            .hero-data-block {
+                bottom: -1rem;
+                left: 0;
+            }
+
+            .project-case:nth-child(even) {
+                direction: ltr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: rgba(247, 247, 246, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-light);
+                transform: translateY(-150%);
+                transition: transform var(--transition-smooth);
+            }
+
+            nav.nav-open {
+                transform: translateY(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-meta-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .project-meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Youssef<span>.</span></a>
+            
+            <nav id="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#stack" class="nav-link">Stack</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#datalab" class="nav-link">Data Lab</a>
+                <a href="#resume" class="nav-link">Resume</a>
+            </nav>
+
+            <button class="menu-toggle" id="menu-btn" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    
+                    <div class="hero-content">
+                        <div class="hero-meta-bar">
+                            <div class="hero-meta-item">
+                                <span class="hero-meta-label">Based In</span>
+                                <span class="hero-meta-value">Beni-Suef, Egypt</span>
+                            </div>
+                            <div class="hero-meta-item">
+                                <span class="hero-meta-label">Discipline</span>
+                                <span class="hero-meta-value">Data Science / AI</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h1 class="hero-title">Building analytical systems with Python and Data.</h1>
+                            <p class="hero-subtitle">
+                                I am Youssef Ashraf, an undergraduate Computer Science student focusing on extracting actionable insights through data analysis, database management, and machine learning models.
+                            </p>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">View Projects</a>
+                            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="portrait-frame"></div>
+                        <div class="portrait-wrapper">
+                            <!-- Image path uses relative structure -->
+                            <img src="./portfolio.jpg" alt="Portrait of Youssef Ashraf" onerror="this.src='https://placehold.co/600x800/EAEAE8/1A1A1A?text=Youssef+Ashraf'">
+                        </div>
+                        
+                        <!-- Data visualization component -->
+                        <div class="hero-data-block">
+                            <div class="meta-text" style="margin-bottom: 1rem;">Skill Focus Distribution</div>
+                            <div class="data-bar-row">
+                                <span class="data-bar-label">PY</span>
+                                <div class="data-bar-track">
+                                    <div class="data-bar-fill accent" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="data-bar-row">
+                                <span class="data-bar-label">SQL</span>
+                                <div class="data-bar-track">
+                                    <div class="data-bar-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="data-bar-row">
+                                <span class="data-bar-label">EDA</span>
+                                <div class="data-bar-track">
+                                    <div class="data-bar-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="data-bar-row">
+                                <span class="data-bar-label">ML</span>
+                                <div class="data-bar-track">
+                                    <div class="data-bar-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-label">01 / Profile</div>
+                
+                <div class="about-grid">
+                    <div>
+                        <p class="about-text">
+                            I am a <strong>Computer Science student</strong> dedicated to understanding how systems operate from the ground up[cite: 15]. My technical foundation unites programming, algorithms, and data structures with a dedicated interest in applying data and artificial intelligence to real-world challenges.
+                        </p>
+                        <p class="about-text">
+                            Rather than relying solely on ready-made abstractions, my learning philosophy centers on deep mastery of fundamentals. I translate ambiguous problem statements into structured logic to engineer solutions that are genuinely connected to real-world needs.
+                        </p>
+                    </div>
+
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-label">Education</div>
+                            <h3 class="info-title">Bachelor's Degree, Computer Science</h3>
+                            <p class="info-desc">Beni-Suef National University | 2026 – 2029[cite: 15]</p>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Specialized Training</div>
+                            <h3 class="info-title">Data Science & AI Trainee</h3>
+                            <p class="info-desc">Digital Egypt Pioneers Initiative (DEPI) | Current</p>
+                            <p class="info-desc" style="margin-top: 0.5rem;">Practicing the full data science workflow: data cleaning, exploratory data analysis, and model building.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH STACK SECTION -->
+        <section id="stack" class="stack-section">
+            <div class="container">
+                <div class="section-label">02 / Technical Toolkit</div>
+                
+                <div class="stack-grid">
+                    
+                    <div class="stack-category">
+                        <h3 class="stack-category-title">Core Languages</h3>
+                        <div class="stack-list">
+                            <div class="stack-item">
+                                <div class="stack-item-title">Python</div>
+                                <div class="stack-item-desc">Primary language for data manipulation, analysis, and automation scripts.</div>
+                            </div>
+                            <div class="stack-item">
+                                <div class="stack-item-title">SQL</div>
+                                <div class="stack-item-desc">Data querying, aggregation, filtering, and relational database management.</div>
+                            </div>
+                            <div class="stack-item">
+                                <div class="stack-item-title">C++</div>
+                                <div class="stack-item-desc">System-level logic, data structures, and algorithmic problem-solving.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack-category">
+                        <h3 class="stack-category-title">Data Processing</h3>
+                        <div class="stack-list">
+                            <div class="stack-item">
+                                <div class="stack-item-title">Pandas</div>
+                                <div class="stack-item-desc">Handling tabular data, cleaning datasets, and structural transformations.</div>
+                            </div>
+                            <div class="stack-item">
+                                <div class="stack-item-title">NumPy</div>
+                                <div class="stack-item-desc">Numerical computing, array management, and vectorized mathematical operations.</div>
+                            </div>
+                            <div class="stack-item">
+                                <div class="stack-item-title">EDA</div>
+                                <div class="stack-item-desc">Exploratory Data Analysis, missing value treatment, and feature extraction.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack-category">
+                        <h3 class="stack-category-title">Modeling & Viz</h3>
+                        <div class="stack-list">
+                            <div class="stack-item">
+                                <div class="stack-item-title">Scikit-learn</div>
+                                <div class="stack-item-desc">Implementation and evaluation of fundamental machine learning algorithms.</div>
+                            </div>
+                            <div class="stack-item">
+                                <div class="stack-item-title">Matplotlib & Seaborn</div>
+                                <div class="stack-item-desc">Creating statistical distributions, scatter plots, and analytical visualizations.</div>
+                            </div>
+                            <div class="stack-item">
+                                <div class="stack-item-title">Database Design</div>
+                                <div class="stack-item-desc">Constructing Entity-Relationship Diagrams (ERDs) and normalizing schemas.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-label">03 / Applied Projects</div>
+
+                <!-- Project 01 -->
+                <article class="project-case">
+                    <div class="project-content">
+                        <div class="project-number">01</div>
+                        <h3 class="project-title">Customer Churn Prediction</h3>
+                        <p class="project-desc">
+                            An end-to-end predictive pipeline developed during the DEPI track. The project identifies at-risk subscribers using supervised learning models, extensive feature engineering, and robust performance metric evaluation.
+                        </p>
+                        
+                        <div class="project-meta-grid">
+                            <div>
+                                <div class="p-meta-label">Stack</div>
+                                <div class="p-meta-val">Python · Pandas · Scikit-learn</div>
+                            </div>
+                            <div>
+                                <div class="p-meta-label">Type</div>
+                                <div class="p-meta-val">Machine Learning Pipeline</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Analytical Visualization Representation -->
+                    <div class="project-visual">
+                        <div class="viz-overlay">ILLUSTRATIVE DATA: RETENTION MODEL</div>
+                        <div class="churn-chart" id="churn-chart">
+                            <div class="churn-bar" style="height: 10%;" data-target="85%"></div>
+                            <div class="churn-bar" style="height: 10%;" data-target="60%"></div>
+                            <div class="churn-bar danger" style="height: 10%;" data-target="35%"></div>
+                            <div class="churn-bar danger" style="height: 10%;" data-target="15%"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 02 -->
+                <article class="project-case">
+                    <div class="project-content">
+                        <div class="project-number">02</div>
+                        <h3 class="project-title">Relational Gym Management System</h3>
+                        <p class="project-desc">
+                            A comprehensive relational database schema featuring fully normalized tables. Developed complex queries to handle membership tracking, trainer scheduling, and business logic automation while ensuring data integrity.
+                        </p>
+                        
+                        <div class="project-meta-grid">
+                            <div>
+                                <div class="p-meta-label">Stack</div>
+                                <div class="p-meta-val">SQL · ERD Design</div>
+                            </div>
+                            <div>
+                                <div class="p-meta-label">Type</div>
+                                <div class="p-meta-val">Database Architecture</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Database Diagram Representation -->
+                    <div class="project-visual">
+                        <div class="viz-overlay">SCHEMA ARCHITECTURE PREVIEW</div>
+                        <div class="db-diagram">
+                            <div class="db-table">
+                                <div class="db-table-header">MEMBERS_TB</div>
+                                <div>id (PK)</div>
+                                <div>plan_id (FK)</div>
+                            </div>
+                            <div style="width: 2px; height: 30px; background: var(--border-color);"></div>
+                            <div class="db-row">
+                                <div class="db-table">
+                                    <div class="db-table-header">PLANS_TB</div>
+                                    <div>id (PK)</div>
+                                    <div>fee</div>
+                                </div>
+                                <div class="db-table" style="border-color: var(--accent-main);">
+                                    <div class="db-table-header" style="color: var(--accent-main);">ATTENDANCE_TB</div>
+                                    <div>member_id (FK)</div>
+                                    <div>date</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- DATA LAB (Learning Projects) -->
+        <section id="datalab" class="datalab-section">
+            <div class="container">
+                <div class="section-label">04 / Data Lab</div>
+                
+                <p class="lab-intro">
+                    An open environment for ongoing portfolio projects, exploratory data analysis, and demonstrating practical applications of Python and SQL on real-world datasets.
+                </p>
+
+                <div class="lab-grid">
+                    
+                    <div class="lab-card">
+                        <div class="lab-tag">Learning Project</div>
+                        <h3>E-Commerce Sales Intelligence</h3>
+                        <p>Analyzing transactional datasets to calculate KPIs, perform longitudinal EDA, and identify seasonal purchasing trends.</p>
+                        <div class="lab-stack">
+                            <span>PYTHON</span> • <span>PANDAS</span> • <span>SQL</span> • <span>VISUALIZATION</span>
+                        </div>
+                    </div>
+
+                    <div class="lab-card">
+                        <div class="lab-tag">Learning Project</div>
+                        <h3>Football Performance Analytics</h3>
+                        <p>Aggregating player/team statistics to build a statistical comparison system focusing on metrics and performance evaluation.</p>
+                        <div class="lab-stack">
+                            <span>PYTHON</span> • <span>PANDAS</span> • <span>SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="lab-card">
+                        <div class="lab-tag">Learning Project</div>
+                        <h3>Customer Behavior Analysis</h3>
+                        <p>Investigating customer transactions to uncover segmentation patterns, retention indicators, and demographic influences.</p>
+                        <div class="lab-stack">
+                            <span>PYTHON</span> • <span>PANDAS</span> • <span>NUMPY</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME & CONTACT -->
+        <section id="resume" class="footer-section">
+            <div class="container">
+                <div class="section-label">05 / Contact & Resume</div>
+                
+                <div class="footer-grid">
+                    
+                    <!-- Resume Download -->
+                    <div class="resume-box">
+                        <h3>Curriculum Vitae</h3>
+                        <p>A concise technical profile outlining education, core competencies, and practical initiative experience.</p>
+                        
+                        <!-- File path uses relative structure -->
+                        <a href="./resume.pdf" download="Youssef_Ashraf_Resume.pdf" class="btn btn-light">
+                            <i data-lucide="download" style="width: 18px; height: 18px;"></i>
+                            Download PDF
+                        </a>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-list" id="contact">
+                        
+                        <div class="contact-item">
+                            <span class="contact-label">Electronic Mail</span>
+                            <a href="mailto:abdelraziikyoussef@gmail.com" class="contact-link">
+                                abdelraziikyoussef@gmail.com
+                            </a>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-label">Professional Network</span>
+                            <a href="https://www.linkedin.com/in/youssef-ashraf-170802413/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                LinkedIn Profile <i data-lucide="arrow-up-right" style="width: 24px; height: 24px;"></i>
+                            </a>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-label">Direct Communication</span>
+                            <a href="tel:+201017332251" class="contact-link">
+                                +20 101 733 2251
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="copyright">
+                    &copy; 2026 Youssef Ashraf. Designed as a Data Observatory.
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // -----------------------------------------
+        // Mobile Navigation Toggle
+        // -----------------------------------------
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-open');
+        });
+
+        // Close mobile menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('nav-open');
+            });
+        });
+
+        // -----------------------------------------
+        // Header Hide/Show on Scroll
+        // -----------------------------------------
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down
+                    header.classList.add('scroll-down');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('scroll-down');
+                }
+            } else {
+                header.classList.remove('scroll-down');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, { passive: true });
+
+        // -----------------------------------------
+        // Intersection Observer for Animations & Nav
+        // -----------------------------------------
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Update active nav link
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+
+                    // Trigger Chart Animation if visible
+                    if (id === 'projects') {
+                        const bars = document.querySelectorAll('.churn-bar');
+                        bars.forEach(bar => {
+                            const targetHeight = bar.getAttribute('data-target');
+                            bar.style.height = targetHeight;
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
